@@ -1,3 +1,6 @@
+
+EN PROCEESOOO
+
 GeoExplorerTourism es una aplicación web orientada al turismo que permite a los usuarios explorar, 
 visualizar y gestionar información sobre distintos lugares turísticos de manera interactiva.
 
