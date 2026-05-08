@@ -1,1 +1,42 @@
-<p>login works!</p>
+<div class="login-container">
+
+  <div class="login-card">
+
+    <h1>GeoExplorerTourism</h1>
+    <p>Inicia sesión para continuar</p>
+
+    <form (ngSubmit)="iniciarSesion()">
+
+      <div class="input-group">
+        <label>Correo electrónico</label>
+
+        <input
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="Ingrese su correo"
+          required
+        >
+      </div>
+
+      <div class="input-group">
+        <label>Contraseña</label>
+
+        <input
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Ingrese su contraseña"
+          required
+        >
+      </div>
+
+      <button type="submit">
+        Ingresar
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
