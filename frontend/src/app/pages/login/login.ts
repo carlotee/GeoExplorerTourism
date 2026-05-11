@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -19,6 +21,9 @@ export class Login {
 
     console.log(this.email);
     console.log(this.password);
+  }
+  registrarse() {
+    this.router.navigate(['/login']);
   }
 
 }
