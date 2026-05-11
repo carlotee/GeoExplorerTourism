@@ -5,6 +5,8 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import { Lugares } from './pages/lugares/lugares';
 import { Perfil } from './pages/perfil/perfil';
 import { Favoritos } from './pages/favoritos/favoritos';
+import { Detallelugare } from './pages/detallelugare/detallelugare';
+import { Admin } from './pages/admin/admin';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -14,4 +16,6 @@ export const routes: Routes = [
     { path: 'lugares', component: Lugares},
     { path: 'perfil', component: Perfil},
     { path: 'favoritos', component: Favoritos},
+    { path: 'detallelugare/:id', component: Detallelugare},
+    { path: 'admin', component: Admin}
 ];
