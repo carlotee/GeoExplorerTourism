@@ -1,22 +1,22 @@
 <div class="login-container">
-
   <div class="login-card">
 
     <h1>GeoExplorerTourism</h1>
     <p>Inicia sesión para continuar</p>
 
-    <form (ngSubmit)="iniciarSesion()">
+    <form [formGroup]="loginForm" (ngSubmit)="iniciarSesion()">
 
       <div class="input-group">
         <label>Correo electrónico</label>
-
+        
         <input
           type="email"
-          [(ngModel)]="email"
-          name="email"
+          formControlName="email"
           placeholder="Ingrese su correo"
-          required
         >
+        <small *ngIf="email?.invalid && email?.touched" style="color: red;">
+          Ingrese un correo válido.
+        </small>
       </div>
 
       <div class="input-group">
@@ -24,18 +24,23 @@
 
         <input
           type="password"
-          [(ngModel)]="password"
-          name="password"
+          formControlName="password"
           placeholder="Ingrese su contraseña"
-          required
         >
+        <small *ngIf="password?.invalid && password?.touched" style="color: red;">
+          La contraseña es obligatoria (min. 6 caracteres).
+        </small>
       </div>
 
-      <button type="submit">
-        Ingresar
+      <p *ngIf="errorMessage" style="color: red; text-align: center;">
+        {{ errorMessage }}
+      </p>
+
+      <button type="submit" [disabled]="isLoading">
+        {{ isLoading ? 'Ingresando...' : 'Ingresar' }}
       </button>
+
     </form>
 
   </div>
-
 </div>

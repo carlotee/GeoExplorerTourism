@@ -1,23 +1,19 @@
 const express = require('express');
 const cors = require('cors');
-const helmet = require('helmet'); // Seguridad adicional
-const morgan = require('morgan'); // Logging de peticiones
+const helmet = require('helmet'); s
+const morgan = require('morgan'); 
 require('dotenv').config();
 
-// Importar la conexión a la DB (basado en tu archivo db.js existente)
 const pool = require('./db'); 
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000; 
 
-// --- Middlewares ---
-app.use(helmet()); // Protege encabezados HTTP
+app.use(helmet()); 
 app.use(cors());
 app.use(express.json());
-app.use(morgan('dev')); // Ver las rutas que se llaman en la consola
+app.use(morgan('dev')); 
 
-// --- Verificación de Conexión a la DB ---
-// Útil para debugging inicial
 pool.query('SELECT NOW()', (err, res) => {
     if (err) {
         console.error('❌ Error conectando a PostgreSQL:', err.stack);
@@ -26,9 +22,6 @@ pool.query('SELECT NOW()', (err, res) => {
     }
 });
 
-// --- Rutas ---
-// Es mejor separar las rutas en archivos (ej: routes/lugares.js)
-// Pero por ahora, centralizamos el prefijo /api
 app.get('/api', (req, res) => {
     res.json({ 
         status: 'success',
@@ -37,12 +30,43 @@ app.get('/api', (req, res) => {
     });
 });
 
-// --- Manejo de Rutas No Encontradas (404) ---
+
+app.post('/api/auth/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const result = await pool.query('SELECT * FROM usuarios WHERE email = $1', [email]);
+
+        if (result.rows.length === 0) {
+            return res.status(401).json({ message: 'Credenciales incorrectas' });
+        }
+
+        const usuario = result.rows[0];
+
+        if (password === usuario.password) {
+            
+            return res.status(200).json({
+                message: 'Login exitoso',
+                token: 'token_valido_generado_por_backend', // Angular guardará esto en localStorage
+                user: {
+                    id: usuario.id,
+                    email: usuario.email
+                }
+            });
+        } else {
+            return res.status(401).json({ message: 'Credenciales incorrectas' });
+        }
+
+    } catch (error) {
+        console.error('Error en el endpoint de login:', error);
+        return res.status(500).json({ message: 'Error interno del servidor al consultar la base de datos' });
+    }
+});
+
 app.use((req, res, next) => {
     res.status(404).json({ error: 'Ruta no encontrada' });
 });
 
-// --- Manejo de Errores Global ---
 app.use((err, req, res, next) => {
     const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
     console.error(`[Error]: ${err.message}`);
@@ -52,7 +76,6 @@ app.use((err, req, res, next) => {
     });
 });
 
-// --- Iniciar servidor ---
 app.listen(PORT, () => {
     console.log(`🚀 Servidor ejecutándose en: http://localhost:${PORT}`);
 });
