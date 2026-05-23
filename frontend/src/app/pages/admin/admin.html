@@ -1,1 +1,36 @@
-<p>admin works!</p>
+<div class="dashboard-container">
+        <h1>Bienvenidos Al menu</h1>
+        <div class="dashboard-options">
+            <h2>Opciones de Administrador</h2>
+            <ul>
+                <!--los usuarios pueden ser gestionados editando/eliminando/agregando/actualizando-->
+                <li><a routerLink="/admin/usuarios">Gestionar Usuarios</a></li>
+                <!--se podra gestionar los lugares editando/eliminado/agregando/actualizando-->
+                <li><a routerLink="/admin/lugares">Gestionar Lugares</a></li>
+                <!--se podra gestionar los detalles de los lugares ya que se edita/actualiza-->
+                <li><a routerLink="/admin/detalleslugare">Gestionar Detalles de Lugares</a></li>
+                <!--se podra gestionar los lugares favoritos editando/eliminado/agregando/actualizando-->
+                <li><a routerLink="/admin/favoritos">Gestionar lugares favoritos</a></li>
+                <!--se podra gestionar los lugares de Reservas editando/eliminado/agregando/actualizando-->
+                <li><a routerLink="/admin/reservas">Gestionar Reservas</a></li>
+                <!--se podra gestionar los carrito editando/eliminado/agregando/actualizando-->
+                <li><a routerLink="/admin/carrito">Gestionar Carrito</a></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="dashboard-stats">
+            <h2>Estadísticas</h2>
+            <div class="stats-cards">
+                <div class="stat-card">
+                    <h3>Usuarios registrados</h3>
+                </div>
+                <div class="stat-card">
+                    <h3>Lugares populares</h3>
+                </div>
+                <div class="stat-card">
+                    <h3>Reservas activas</h3>
+                </div>
+            </div>
+            <p>Aquí puedes mostrar estadísticas relevantes para el administrador: número de usuarios registrados, lugares populares, reservas activas y más.</p>
+        </div>
+</div>
