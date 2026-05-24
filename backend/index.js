@@ -30,7 +30,7 @@ app.get('/api', (req, res) => {
     });
 });
 
-
+// --- RUTA DE LOGIN ---
 app.post('/api/auth/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -47,7 +47,7 @@ app.post('/api/auth/login', async (req, res) => {
             
             return res.status(200).json({
                 message: 'Login exitoso',
-                token: 'token_valido_generado_por_backend', // Angular guardará esto en localStorage
+                token: 'token_valido_generado_por_backend', 
                 user: {
                     id: usuario.id,
                     email: usuario.email,
@@ -64,10 +64,28 @@ app.post('/api/auth/login', async (req, res) => {
     }
 });
 
+// --- NUEVA RUTA: OBTENER TODOS LOS USUARIOS ---
+app.get('/api/usuarios', async (req, res) => {
+    try {
+        // Hacemos la consulta a PostgreSQL
+        // NOTA: Si no tienes una columna "nombre" en tu tabla usuarios, bórrala de este SELECT
+        const result = await pool.query('SELECT id, nombre, email, rol FROM usuarios ORDER BY id ASC');
+        
+        // Devolvemos las filas encontradas a Angular
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error('Error obteniendo usuarios:', error);
+        return res.status(500).json({ message: 'Error interno del servidor al obtener usuarios' });
+    }
+});
+
+// --- MANEJADOR DE RUTAS NO ENCONTRADAS (404) ---
+// IMPORTANTE: Esto siempre debe ir después de todas tus rutas definidas
 app.use((req, res, next) => {
     res.status(404).json({ error: 'Ruta no encontrada' });
 });
 
+// --- MANEJADOR DE ERRORES GLOBALES ---
 app.use((err, req, res, next) => {
     const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
     console.error(`[Error]: ${err.message}`);

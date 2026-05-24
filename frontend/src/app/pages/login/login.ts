@@ -47,29 +47,23 @@ export class Login {
       return;
 
     }
-
     this.isLoading = true;
+    
     this.errorMessage = '';
 
     this.authService.login(this.loginForm.value).subscribe({
-
       next: (respuesta: any) => {
-
         this.isLoading = false;
-
         console.log('Respuesta del backend:', respuesta);
 
-        // guardar token
         if (respuesta && respuesta.token) {
           localStorage.setItem('token', respuesta.token);
         }
 
-        // guardar rol (Corregido de 'usuario' a 'user')
         if (respuesta.user?.rol) {
           localStorage.setItem('rol', respuesta.user.rol);
         }
 
-        // redirección según rol (Corregido de 'usuario' a 'user')
         if (respuesta.user?.rol === 'administrador') {
 
           console.log('Administrador detectado');
@@ -79,7 +73,6 @@ export class Login {
           console.log('Usuario normal');
           this.router.navigate(['/dashboard']);
         }
-
       },
       error: (error) => {
         this.isLoading = false;
@@ -90,7 +83,5 @@ export class Login {
           'Error al conectar con la base de datos o credenciales incorrectas.';
       }
     });
-
   }
-
 }

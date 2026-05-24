@@ -19,8 +19,43 @@
         </div>
         <div class="dashboard-sections">
             <section id="usuarios">
-                <h2>Usuarios</h2>
-                <p>Sección para gestionar usuarios con el id correspondiente.</p>
+                    <h2>Gestión de Usuarios</h2>
+                    <p>Panel de administración de cuentas y roles registrados en la base de datos.</p>
+
+                    <div *ngIf="isLoading" class="loading-state">
+                        <p>Cargando datos desde el servidor...</p>
+                    </div>
+
+                    <div class="glass-table-container" *ngIf="!isLoading">
+                        <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th> <th>Email</th>
+                        <th>Rol</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of usuarios">
+                        <td>#{{ user.id }}</td>
+                        <td>{{ user.nombre_usuario }}</td> 
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <span class="badge" [ngClass]="user.rol">{{ user.rol }}</span>
+                        </td>
+                        <td class="actions">
+                            <button class="btn-edit">Editar</button>
+                            <button class="btn-delete">Eliminar</button>
+                        </td>
+                    </tr>
+                    
+                    <tr *ngIf="usuarios.length === 0">
+                        <td colspan="5" class="empty-state">No hay usuarios registrados en la base de datos.</td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
             </section>
             <section id="lugares">
                 <h2>Lugares</h2>
