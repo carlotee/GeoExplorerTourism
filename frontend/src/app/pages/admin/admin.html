@@ -4,33 +4,43 @@
             <h2>Opciones de Administrador</h2>
             <ul>
                 <!--los usuarios pueden ser gestionados editando/eliminando/agregando/actualizando-->
-                <li><a routerLink="/admin/usuarios">Gestionar Usuarios</a></li>
+                <li><a href="#usuarios">Gestionar Usuarios</a></li>
                 <!--se podra gestionar los lugares editando/eliminado/agregando/actualizando-->
-                <li><a routerLink="/admin/lugares">Gestionar Lugares</a></li>
+                <li><a href="#lugares">Gestionar Lugares</a></li>
                 <!--se podra gestionar los detalles de los lugares ya que se edita/actualiza-->
-                <li><a routerLink="/admin/detalleslugare">Gestionar Detalles de Lugares</a></li>
+                <li><a href="#detalleslugare">Gestionar Detalles de Lugares</a></li>
                 <!--se podra gestionar los lugares favoritos editando/eliminado/agregando/actualizando-->
-                <li><a routerLink="/admin/favoritos">Gestionar lugares favoritos</a></li>
+                <li><a href="#favoritos">Gestionar lugares favoritos</a></li>
                 <!--se podra gestionar los lugares de Reservas editando/eliminado/agregando/actualizando-->
-                <li><a routerLink="/admin/reservas">Gestionar Reservas</a></li>
+                <li><a href="#reservas">Gestionar Reservas</a></li>
                 <!--se podra gestionar los carrito editando/eliminado/agregando/actualizando-->
-                <li><a routerLink="/admin/carrito">Gestionar Carrito</a></li>
-                <li></li>
+                <li><a href="#carrito">Gestionar Carrito</a></li>
             </ul>
         </div>
-        <div class="dashboard-stats">
-            <h2>Estadísticas</h2>
-            <div class="stats-cards">
-                <div class="stat-card">
-                    <h3>Usuarios registrados</h3>
-                </div>
-                <div class="stat-card">
-                    <h3>Lugares populares</h3>
-                </div>
-                <div class="stat-card">
-                    <h3>Reservas activas</h3>
-                </div>
-            </div>
-            <p>Aquí puedes mostrar estadísticas relevantes para el administrador: número de usuarios registrados, lugares populares, reservas activas y más.</p>
+        <div class="dashboard-sections">
+            <section id="usuarios">
+                <h2>Usuarios</h2>
+                <p>Sección para gestionar usuarios con el id correspondiente.</p>
+            </section>
+            <section id="lugares">
+                <h2>Lugares</h2>
+                <p>Sección para gestionar lugares con el id correspondiente.</p>
+            </section>
+            <section id="detalleslugare">
+                <h2>Detalles de Lugares</h2>
+                <p>Sección para gestionar los detalles de los lugares con el id correspondiente.</p>
+            </section>
+            <section id="favoritos">
+                <h2>Favoritos</h2>
+                <p>Sección para gestionar lugares favoritos con el id correspondiente.</p>
+            </section>
+            <section id="reservas">
+                <h2>Reservas</h2>
+                <p>Sección para gestionar reservas con el id correspondiente.</p>
+            </section>
+            <section id="carrito">
+                <h2>Carrito</h2>
+                <p>Sección para gestionar el carrito con el id correspondiente.</p>
+            </section>
         </div>
 </div>
