@@ -50,7 +50,8 @@ app.post('/api/auth/login', async (req, res) => {
                 token: 'token_valido_generado_por_backend', // Angular guardará esto en localStorage
                 user: {
                     id: usuario.id,
-                    email: usuario.email
+                    email: usuario.email,
+                    rol: usuario.rol
                 }
             });
         } else {
