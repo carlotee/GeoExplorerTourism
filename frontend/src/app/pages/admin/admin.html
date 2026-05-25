@@ -1,81 +1,83 @@
 <div class="dashboard-container">
-        <h1>Bienvenidos Al menu</h1>
-        <div class="dashboard-options">
-            <h2>Opciones de Administrador</h2>
-            <ul>
-                <!--los usuarios pueden ser gestionados editando/eliminando/agregando/actualizando-->
-                <li><a href="#usuarios">Gestionar Usuarios</a></li>
-                <!--se podra gestionar los lugares editando/eliminado/agregando/actualizando-->
-                <li><a href="#lugares">Gestionar Lugares</a></li>
-                <!--se podra gestionar los detalles de los lugares ya que se edita/actualiza-->
-                <li><a href="#detalleslugare">Gestionar Detalles de Lugares</a></li>
-                <!--se podra gestionar los lugares favoritos editando/eliminado/agregando/actualizando-->
-                <li><a href="#favoritos">Gestionar lugares favoritos</a></li>
-                <!--se podra gestionar los lugares de Reservas editando/eliminado/agregando/actualizando-->
-                <li><a href="#reservas">Gestionar Reservas</a></li>
-                <!--se podra gestionar los carrito editando/eliminado/agregando/actualizando-->
-                <li><a href="#carrito">Gestionar Carrito</a></li>
-            </ul>
-        </div>
-        <div class="dashboard-sections">
-            <section id="usuarios">
-                    <h2>Gestión de Usuarios</h2>
-                    <p>Panel de administración de cuentas y roles registrados en la base de datos.</p>
+    <h1>Bienvenidos Al menu</h1>
+    
+    <div class="dashboard-options">
+        <h2>Opciones de Administrador</h2>
+        <ul>
+            <li><a href="#usuarios">Gestionar Usuarios</a></li>
+            <li><a href="#lugares">Gestionar Lugares</a></li>
+            <li><a href="#detalleslugare">Gestionar Detalles de Lugares</a></li>
+            <li><a href="#favoritos">Gestionar lugares favoritos</a></li>
+            <li><a href="#reservas">Gestionar Reservas</a></li>
+            <li><a href="#carrito">Gestionar Carrito</a></li>
+        </ul>
+    </div>
+    
+    <div class="dashboard-sections">
+        <section id="usuarios">
+            <h2>Gestión de Usuarios</h2>
+            <p>Panel de administración de cuentas y roles registrados en la base de datos.</p>
 
-                    <div *ngIf="isLoading" class="loading-state">
-                        <p>Cargando datos desde el servidor...</p>
-                    </div>
+            <div *ngIf="isLoading" class="loading-state">
+                <p>Cargando datos desde el servidor...</p>
+            </div>
 
-                    <div class="glass-table-container" *ngIf="!isLoading">
-                        <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th> <th>Email</th>
-                        <th>Rol</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of usuarios">
-                        <td>#{{ user.id }}</td>
-                        <td>{{ user.nombre_usuario }}</td> 
-                        <td>{{ user.email }}</td>
-                        <td>
-                            <span class="badge" [ngClass]="user.rol">{{ user.rol }}</span>
-                        </td>
-                        <td class="actions">
-                            <button class="btn-edit">Editar</button>
-                            <button class="btn-delete">Eliminar</button>
-                        </td>
-                    </tr>
-                    
-                    <tr *ngIf="usuarios.length === 0">
-                        <td colspan="5" class="empty-state">No hay usuarios registrados en la base de datos.</td>
-                    </tr>
-                </tbody>
-            </table>
-</div>
-            </section>
-            <section id="lugares">
-                <h2>Lugares</h2>
-                <p>Sección para gestionar lugares con el id correspondiente.</p>
-            </section>
-            <section id="detalleslugare">
-                <h2>Detalles de Lugares</h2>
-                <p>Sección para gestionar los detalles de los lugares con el id correspondiente.</p>
-            </section>
-            <section id="favoritos">
-                <h2>Favoritos</h2>
-                <p>Sección para gestionar lugares favoritos con el id correspondiente.</p>
-            </section>
-            <section id="reservas">
-                <h2>Reservas</h2>
-                <p>Sección para gestionar reservas con el id correspondiente.</p>
-            </section>
-            <section id="carrito">
-                <h2>Carrito</h2>
-                <p>Sección para gestionar el carrito con el id correspondiente.</p>
-            </section>
-        </div>
+            <div class="glass-table-container" *ngIf="!isLoading">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th> 
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of usuarios">
+                            <td>#{{ user.id }}</td>
+                            <td>{{ user.nombre_usuario }}</td> 
+                            <td>{{ user.email }}</td>
+                            <td>
+                                <span class="badge" [ngClass]="user.rol">{{ user.rol }}</span>
+                            </td>
+                            <td class="actions">
+                                <button class="btn-edit">Editar</button>
+                                <button class="btn-delete">Eliminar</button>
+                            </td>
+                        </tr>
+                        
+                        <tr *ngIf="usuarios.length === 0">
+                            <td colspan="5" class="empty-state">No hay usuarios registrados en la base de datos.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="lugares">
+            <h2>Lugares</h2>
+            <p>Sección para gestionar lugares con el id correspondiente.</p>
+        </section>
+        
+        <section id="detalleslugare">
+            <h2>Detalles de Lugares</h2>
+            <p>Sección para gestionar los detalles de los lugares con el id correspondiente.</p>
+        </section>
+        
+        <section id="favoritos">
+            <h2>Favoritos</h2>
+            <p>Sección para gestionar lugares favoritos con el id correspondiente.</p>
+        </section>
+        
+        <section id="reservas">
+            <h2>Reservas</h2>
+            <p>Sección para gestionar reservas con el id correspondiente.</p>
+        </section>
+        
+        <section id="carrito">
+            <h2>Carrito</h2>
+            <p>Sección para gestionar el carrito con el id correspondiente.</p>
+        </section>
+    </div>
 </div>

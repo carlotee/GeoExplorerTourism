@@ -69,7 +69,7 @@ app.get('/api/usuarios', async (req, res) => {
     try {
         // Hacemos la consulta a PostgreSQL
         // NOTA: Si no tienes una columna "nombre" en tu tabla usuarios, bórrala de este SELECT
-        const result = await pool.query('SELECT id, nombre, email, rol FROM usuarios ORDER BY id ASC');
+        const result = await pool.query('SELECT id, nombre_usuario, email, rol FROM usuarios ORDER BY id ASC');
         
         // Devolvemos las filas encontradas a Angular
         res.status(200).json(result.rows);
