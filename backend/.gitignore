@@ -1,4 +1,38 @@
+# Dependencias de Node
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Variables de entorno
 .env
+.env.production
+.env.local
+.env.test
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log*
+
+# Build
 dist/
 build/
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de pruebas (opcional, pero común para no subir pruebas automáticas)
+/tests
